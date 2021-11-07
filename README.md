@@ -1,2 +1,2 @@
 # finnwurtz.github.io
-This is the repository for my project website; it is currently [under construction](https://finnwurtz.github.io/).
+[finnwurtz.github.io](https://finnwurtz.github.io/) is the future home of my project website; I expect it to be up and running soon.
