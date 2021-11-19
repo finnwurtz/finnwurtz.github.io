@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Finn's Website | Perceptual Density</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">finnwurtz.github.io</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More Options</a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">GitHub</a></li>
+                                <li><a class="dropdown-item" href="#">LinkedIn</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container">
+            <div class="text-left mt-5">
+                <h1 align="center">Perceptual Density: An Alternative Approach to Measuring Urban Space [DRAFT]</h1>
+                <p class="lead"  align="center">Finn Wurtz, researcher of social cognition and the built environment</p>
+                <hr>
+
+                <p><b> Table Of Contents</b></p>
+                
+                <p>Overview | Project Origins | Glossary of Terms | Project Methods | Program | Discussion | Future Directions | References</p>
+                
+                <hr>
+                
+                <p><b> Overview</b></p>
+                
+                <p>&bull; Perceptual Density is both a program (formatted as a Jupyter notebook) and the larger research project surrounding that program.</p>
+                
+                <p>&bull; The project aims to approximate the phenomenon of residential density as it is perceived by a neighborhood&rsquo;s residents and visitors.</p>
+                
+                <p>&bull; The project required me to assemble urban data from a wide range of sources and organize that data using a variety of tools and Python libraries.</p>
+                
+                <p>&bull; The resulting constructs &ndash; among them, a composite density metric &ndash; could help policy makers minimize the disruptive effects of urban growth.</p>
+                
+                <p>While there are no universally agreed-upon definitions for the terms &ldquo;city&rdquo; and &ldquo;urban area,&rdquo; subjective definitions for these terms tend to allude to the high densities of human settlement that their referents exhibit. What is meant by &lsquo;density&rsquo; in this context is highly dependent on the method used to calculate the density, with different methods being used in different analyses. In this study, I propose a framework for evaluating neighborhood density that is sensitive to people&rsquo;s local mobility patterns and social networks. This framework, a composite density metric that combines three different local density metrics, attempts to answer the following questions: What factors determine people&rsquo;s perceptions of urban density, and how does this &ldquo;perceptual density&rdquo; diverge from density as it is more conventionally measured? The project concludes with a discussion of the framework&rsquo;s implications, along with a list of ideas for future applications and expansions of the framework.</p>
+                
+                <hr>
+                
+                <p><b> Project Origins</b></p>
+                
+                <p>This project was inspired by a number of other projects, including (but not limited to):</p>
+                
+                <p><i>Jed Kolko&rsquo;s Urbanization Perceptions Index</i> &ndash; First off, this project was in large part inspired by Jed Kolko&rsquo;s research [LINK HERE] on neighborhood-level urbanization perceptions in the United States. In his studies, Kolko has sought to determine what makes people categorize their neighborhoods as urban, suburban, or rural. While his analyses have incorporated an extensive number of variables, measures of density have consistently been at the core of his work, and he has demonstrated that household density has a particularly strong ability to explain people&rsquo;s perceptions of urbanization. As a result, this analysis picks up where Kolko&rsquo;s leaves off, in large part by using household density as a jumping off point to explore questions about perception that diverge somewhat from Kolko&rsquo;s line of inquiry.</p>
+                
+                <p><i>Martin W. Lewis&rsquo; Demic Atlas</i> &ndash; In 2011, Martin W. Lewis debuted a project called the &ldquo;Demic Atlas,&rdquo; [LINK HERE] which used standardized global units of roughly equal population for socio-economic comparisons. That project helped inspire this project&rsquo;s analogous construct of &ldquo;demic units,&rdquo; which are standardized urban units (also of roughly equal population) used for similar purposes.</p>
+                
+                <p><i>Carlos Moreno&rsquo;s 15-Minute City</i> &ndash; Since 2016, Carlos Moreno has seen widespread adoption of his vision for &ldquo;15-minute cities&rdquo; [LINK HERE], or cities in which each resident&rsquo;s daily needs are accessible in under 15 minutes. With Paris mayor Anne Hidalgo making the framework a key part of her successful 2020 re-election campaign and mayors around the world pledging to work towards 15-minute cities as a means of fighting the climate crisis [LINK HERE], the 15-minute city concept has become a staple of urban planning discourse and is a key inspiration for this project&rsquo;s analogous &ldquo;transit sheds.&rdquo;</p>
+                
+                <p><i>Walk Score Inc&rsquo;s Walkability Index</i> &ndash; Since 2007, Walk Score [LINK HERE] has been assigning walkability scores to urban places using its amenity-focused algorithm. The company&rsquo;s smooth heat maps and hierarchical neighborhood rankings, which function as proxies for various types of density, find analogues in this project&rsquo;s maps and rankings of neighborhoods&rsquo; &ldquo;composite density.&rdquo;</p>
+                
+                <p><i>Bill Rankin&rsquo;s Radical Cartography</i> &ndash; In 2005, Bill Rankin created a site called Radical Cartography [LINK HERE], on which he has published a long list of experimental cartography projects. Rankin&rsquo;s aim with this site has been twofold [LINK HERE]: first, he aims to draw people&rsquo;s attention to the social dimensions of landscapes; and second, he aims to challenge his audience to reimagine geographic boundaries. This project takes up the mantle of both of these goals by making population data visible in new ways, using techniques that de-emphasize the boundaries used in the collection of the data.</p>
+                
+                <hr>
+                
+                <p><b> Glossary of Terms</b></p>
+                
+                <p>I have included an alphabetized list of definitions for some key terms that appear throughout this project:</p>
+                
+                <p><i>Block Group</i> &ndash; A census-defined geographic region that typically contains between 600 and 3,000 people. Smaller than census tracts and larger than census blocks, block groups are the smallest geographic entities for which the U.S. Census Bureau publishes sample data.</p>
+                
+                <p><i>Centroid</i> &ndash; A two-dimensional shape&rsquo;s center of mass; in other words, its center of balance. When using a 2D projection to approximate the earth&rsquo;s surface, analysts may use the centroids of shapes in the 2D projection to approximate the centers of the regions that those shapes correspond to on earth.</p>
+                
+                <p><i>Composite Density</i> &ndash; For the purposes of this study, composite density is a metric that consolidates several measures of density into one. Gross household density is combined with measures that incorporate travelsheds and demic units to produce a hybrid of all three measures.</p>
+                
+                <p><i>Demic Unit</i> &ndash; For the purposes of this study, a demic unit is a set of people or households, given some number k and some point in space x, that contains the k nearest people or households to point x.</p>
+                
+                <p><i>Economies of Density</i> &ndash; Cost savings or utility increases resulting from denser concentrations of economic agents. Conversely, diseconomies of density are cost increases or utility decreases resulting from denser concentrations.</p>
+                
+                <p><i>Friendship Paradox</i> &ndash; The seemingly contradictory property of social networks wherein the majority of people have fewer friends than their average friend does.</p>
+                
+                <p><i>Great Circle</i> &ndash; A circle that bisects the surface of a sphere. The shortest path between any two points on a sphere follows a great circle. When using a sphere to approximate the earth&rsquo;s shape, analysts may use great circles to approximate the distance between two points on the earth&rsquo;s surface.</p>
+                
+                <p><i>Gross Density</i> &ndash; For the purposes of this study, the gross density of a block group is the number of households in the block group divided by the block group&rsquo;s land area.</p>
+                
+                <p><i>Household</i> &ndash; A census-defined group of people occupying the same housing unit. In 2019, the U.S. Census Bureau estimated that the average household contains approximately 2.6 people.</p>
+                
+                <p><i>Infill Growth Index</i> &ndash; The infill growth index represents an attempt to quantify the degree to which the addition of new households to a block group would change people&rsquo;s perception of an urban area&rsquo;s overall density contours. For the purposes of this study, the infill growth index of a block group averages its composite density quantile with its perceptual offset quantile and takes the quantile value of the result.</p>
+                
+                <p><i>Metropolitan Statistical Area</i> &ndash; A census-defined group of counties which encompasses and is centered on at least one urbanized area.</p>
+                
+                <p><i>Neighbor Paradox</i> &ndash; The seemingly contradictory geographic phenomenon wherein most households have fewer neighbors (within a given radius) than their average neighbor (within that same radius); related to the friendship paradox.</p>
+                
+                <p><i>Perceptual Offset</i> &ndash; For the purposes of this study, the perceptual offset is the difference between a block group&rsquo;s composite density quantile (a proxy for perceived density) and its gross density quantile.</p>
+                
+                <p><i>Principal City</i> &ndash; A city or unincorporated place at the core of a metropolitan statistical area; it is typically among the largest cities or unincorporated places in the area. For the purposes of this project, the term &ldquo;principal city&rdquo; will refer to the largest principal city in a metropolitan statistical area.</p>
+                
+                <p><i>Quantile</i> &ndash; A subset of a sample of people or objects that is created when the sample is ranked according to a variable and then divided into a whole number of groups of equal size. Perhaps the most widely-used quantile partitioning scheme is the percentile, which divides a sample into 100 groups.</p>
+                
+                <p><i>Study Area</i> &ndash; For the purposes of this study, the study area is a circular region centered on the city hall of a principal city located in the program user&rsquo;s urbanized area of choice.</p>
+                
+                <p><i>Travelshed</i> &ndash; For the purposes of this study, a travelshed is a circular region surrounding a point on the earth&rsquo;s surface. This region corresponds to the all the places to which one could theoretically travel from the point within a given period of time using a given mode of transportation that travels at a given speed.</p>
+                
+                <p><i>Urbanized Area</i> &ndash; A census-defined geographic region that contains a large, more-or-less contiguous expanse of populated land centered on a densely populated core. For the purposes of the 2010 U.S. census, the minimum population threshold for urbanized areas was 50,000 people.</p>
+                
+                <hr>
+                
+                <p><b> Project Methods</b></p>
+                
+                <p>Once the program user has loaded the data and followed a set of interactive prompts, the program analyzes the data and produces a plot of the study area. Users may choose which U.S. urban area to analyze, adjust the program&rsquo;s methodological parameters, and customize the visual qualities of the plot. If users choose to use the default inputs, the program uses a 25-kilometer bounding radius around a principal city&rsquo;s city hall to delineate the study area; other default inputs include a travelshed radius of 1.25 kilometers and a demic unit equal to the nearest 10,000 households. The program&rsquo;s analysis is limited to block groups whose census-defined internal points fall within the user&rsquo;s urbanized area of choice.</p>
+                
+                <p>The program calculates a travelshed density value for each urban block group using the household-weighted average density of all block groups whose centroids fall within the travelshed radius of each block group&rsquo;s centroid. In other words, the travelshed density represents the block group-level density of all households within some traveling distance of a block group. The program then assigns a demic unit radius value to each urban block group by iteratively summing the households from the block group&rsquo;s nearest block groups until the number of households in the demic unit is reached, with the radius being equal to the distance between the block group&rsquo;s centroid and the centroid of its tipping-point block group. A composite density value is calculated for each urban block group using the household-weighted quantiles of the block group&rsquo;s gross density, travelshed density, and demic unit radius values, relative to all of the urban block groups in the study area. Program users may adjust the weights in the formula that calculates composite density; travelshed density and demic unit radius are given twice as much weight as gross density by default.</p>
+                
+                <p>In the paragraphs below, I explain some of the methodological decisions that I made while putting this project together:</p>
+                
+                <p><i>Households Instead of Population</i> &ndash; I chose to focus on household density rather than population density for a few reasons. According to the proposed urban areas criteria for the 2020 census [LINK HERE], the U.S. Census Bureau has decided to adopt a practice called differential privacy that prioritizes privacy at the expense of accurate population counts at the block group level. As long as the census continues to use differential privacy methods that affect the accuracy of population data while leaving household data unaffected at the block group level, models that use household data will always be more accurate than models that use population data. Furthermore, because households correspond directly to occupied housing units, they reflect the composition of the built environment more directly than population data ever will. Because I wanted this model to remain accurate as the format of census data evolves, and because I wanted it to reflect a combination of human and built environment density, the use of household data in place of population data was a logical choice for this project.</p>
+                
+                <p><i>Block Groups as Areal Units</i> &ndash; I chose to analyze neighborhoods at the level of block groups because it seemed like the best compromise between different research imperatives. While Jed Kolko&rsquo;s studies of neighborhood urbanization perceptions [LINK HERE] used larger geographic units (such as zip code tabulation areas and census tracts) as their areal units of analysis, a significant factor in that decision was those studies&rsquo; reliance on variables (such as median year of construction) that exhibited substantial relative error at the block group level. Meanwhile, studies of the modifiable areal unit problem [LINK HERE], or the question of which geographic areal unit to use for any given analysis, have demonstrated that analyses using the smallest available geographic unit of analysis consistently exhibit the smallest amount of bias. Because block groups are the smallest unit of analysis for which recent household data (from the American Community Survey) is available, they enable this project to analyze recent trends at a granular level while exhibiting low levels of bias.</p>
+                
+                <p><i>Urbanized Areas as Boundaries</i> &ndash; I chose to use urbanized areas to help delineate the scope of my analysis because I was primarily interested in capturing people&rsquo;s perceptions of urban space and didn&rsquo;t want data from rural block groups near urban centers to skew the results of my analyses. While the U.S. Census Bureau&rsquo;s set of criteria for delineating urbanized areas is just one of many methods for identifying urban space, the relative precision and accessibility of the bureau&rsquo;s urbanized area schema made it the best choice for this project. Specifically, this project&rsquo;s analysis excludes block groups whose census-defined internal point (typically either its centroid or the closest point on land within its boundaries to its centroid) falls outside of the program user&rsquo;s urbanized area (or areas) of interest.</p>
+                
+                <p><i>Great Circle Distances</i> &ndash; I chose to calculate distances in terms of great circle distance mostly for the sake of computation speed. While I could have used ellipsoidal or geodesic distance for slightly more accurate measurements, the relative error of measurements calculated using great circle distances still tends to be very small, whereas the time savings from using great circle distance to calculate a large matrix of distances (such as this project&rsquo;s large matrix of distances between block group centroids) is substantial. Furthermore, in using great circle distance calculations, this project follows the lead of applications such as Google Maps [LINK HERE], whose programming interface uses spherical geometry as the basis for calculations in its geometry library.</p>
+                
+                <p><i>City Hall Azimuthal Projections</i> &ndash; I chose to use azimuthal map projections centered on primary cities&rsquo; city halls for a few reasons. In a 2019 analysis that compared various measures of central location in U.S. cities [LINK HERE], Matthew Holian demonstrates that city hall coordinates are among the better proxies for city center location in the 21st century. While the use of a single point to represent the center of a city may be insufficient in the context of certain analyses, it is helpful when one wants to compare multiple cities using a consistent set of projections. Azimuthal projections are consistent insofar as they preserve the direction of all points relative to some central point, and the equal-area and equidistant variants of the azimuthal projection allow for standardization of surface area and distance from the central point, respectively. In total, this project uses two azimuthal projections, both centered on the city hall of the program user&rsquo;s city of interest: an equidistant projection to calculate the centroids of block groups and an equal-area projection to plot the final set of data.</p>
+                
+                <p><i>Cumulative Distributions</i> &ndash; I chose express each of my density metrics in terms of cumulative distributions of households mostly because I believe that this way of framing density reflects the social dimension of people&rsquo;s perceptions particularly well. When a variable describes the proportion of a study area&rsquo;s households that are located in a denser neighborhood than a given household is, that variable becomes a shorthand for the social comparisons that contextualize people&rsquo;s perceptions. This type of variable also allows us to speak in terms of proportions more generally, making statements about the proportion of a study area&rsquo;s households whose local density meets certain general thresholds. Furthermore, organizing data in this way makes for intuitive visuals, insofar as one can use different colors to represent different (but definitionally equal) quantiles of the total set of households in a given study area.</p>
+                
+                <p><i>Default 25km Bounding Radius</i> &ndash; For this project, I was most interested in looking at urban neighborhoods within a reasonably short bus or rail commute of the center of any given city. A seminal 1994 paper by Cesare Marchetti [LINK HERE] helped to popularize the observation that even as transportation technologies have evolved, the amount of time that most people are willing to spend commuting has stayed roughly constant, hovering around 30 minutes in each direction. Combining this constant with Hannah Twaddell&rsquo;s 2009 observation that light rail speeds tend to average between 24 and 48 kilometers per hour [LINK HERE], it follows that most neighborhoods within a light rail commute of the center of a city would be located within 25 kilometers of that center. In addition, circles with a radius of 25 kilometers around city hall encompassed most or all of the land in the primary city in all four of my test cases (Seattle, Portland, San Francisco, and San Diego). As a result, I set 25 kilometers as the default bounding radius for the program&rsquo;s scope of analysis.</p>
+                
+                <p><i>Default 1.25km Travelshed Radius</i> &ndash; For this project, I envisioned the travelshed as an extension of the 15-minute city concept, in that it should reflect a person&rsquo;s perception of all the places that are a short local trip away. To make the concept as widely applicable as possible, I decided to treat walking as the default mode of transportation. In her 2011 paper on walking speeds [LINK HERE], Michaela Schimpl determined that adult human walking speeds tend to average between 4 and 5 kilometers per hour. Combining this range with the idea that short local trips should take no more than 15 minutes to complete in each direction, it follows that most short local walking trips occur between destinations within 1.25 kilometers of each other. As a result, I set 1.25 kilometers as the program&rsquo;s default travelshed radius.</p>
+                
+                <p><i>Default 10K-Household Demic Unit</i> &ndash; For this project, I envisioned the demic unit as a representation of the social fabric of a neighborhood, in that it should reflect a person&rsquo;s understanding of their local community. Local institutions (such as hospitals and other sites of essential service provision) tend to be defined by the areal boundaries of their service catchments, and to the extent that these institutions operate at consistent demographic scales, the size of those catchments tends to vary as a function of local settlement density. In more concrete terms, this means the maximum distance that people typically travel in order to access a given type of service is a meaningful dimension of settlement density, one that we can measure using a demic unit equal to the average number of households served by that type of institution. According to data collected by the Bureau of Labor Statistics in 2019 [LINK HERE], the average U.S. hospital serves a bit under 24,000 people, which is close to half the minimum number of people in an urbanized area and roughly equivalent to 10,000 households. As a result, I set the program&rsquo;s default number of households in a demic unit to 10,000.</p>
+                
+                <p><i>Default Composite Density Weights</i> &ndash; For this project, I wanted composite density to strike a balance between emphasizing mobility patterns (like travelshed density) and emphasizing social networks (like demic radius values). At the same time, I wanted it to reflect gross density without weighting it too heavily. Because I did not have access to a set of data cataloguing other people&rsquo;s perceptions of density, I did not have the option of using such perceptions to determine the best weight for each of composite density&rsquo;s input variables. As a result, by default, the program&rsquo;s composite density metric is 20% gross density, 40% travelshed density, and 40% demic unit radius.</p>
+                
+                <p><i>Default Septile Quantiles</i> &ndash; For this project, I wanted the plots to be easily legible while also faithfully representing people&rsquo;s likely perceptions of local household density. In his 2019 paper on Likert scale design [LINK HERE], Hamed Taherdoost determined that seven-point rating scales tend to do a better job of measuring respondents&rsquo; attitudes when compared with rating scales of different lengths. It follows, then, that any future research endeavor that attempts to match people&rsquo;s perceptions with the metrics developed in this project should use a seven-point rating scale if the option presents itself. As a result, I set the program&rsquo;s default number of quantiles to seven.</p>
+                
+                <p><i>Default Hexagonal Grid</i> &ndash; For this project, I wanted the plots to be able to incorporate future efforts at interpolation, which would produce even smoother visuals. Uber&rsquo;s H3 hexagonal grid system [LINK HERE], which I used in this project, exhibits several advantages in this regard: the code is open source, the area of tiles with a given resolution is relatively uniform at the local level, and the distance between a tile&rsquo;s center and the points within the tile is minimized. I also wanted to avoid the sharp acute angles present within the perimeters of certain block groups, which are arbitrary and have the potential to distract viewers. As a result, I converted block groups into their hexagonal grid approximations and directed the program to plot those approximations by default.</p>
+                
+                <hr>
+                
+                <p><b> Program</b></p>
+                
+                <p>The notebook containing this program can be viewed here [LINK HERE] or downloaded from my GitHub [LINK HERE].</p>
+                
+                <p>To run this program on your machine, you will need to install several python libraries (if they are not already installed) and load a few sets of data with specific formats into the same folder as the program. Python libraries used by this program include Pandas, GeoPandas, NetworkX, OSMnx, NumPy, Matplotlib, Shapely, Pyproj, GeoPy, H3Pandas, and Colorcet. Data sets include city_hall_coords.csv, which acts as a crosswalk between primary cities&rsquo; FIPS codes and their spherical coordinates; tl_2020_us_uac10 [LINK HERE], which contains the shapefiles for urbanized areas delineated by the 2010 census; state place shapefiles [LINK HERE], which include the boundaries for cities and other census-designated places; and state block group data, which can be assembled and formatted using the Block_Group_Data_Cleaner notebook.</p>
+                
+                <p>(Note: the versions of city_hall_coords.csv and tl_2020_us_uac10 in my GitHub repository include only the data for my four test case cities. For a more complete version of city_hall_coords.csv, contact Daniel Hartley [LINK HERE] or look up the coordinates yourself.)</p>
+                
+                <p>To assemble and format state block group data, you will need state block group shapefiles [LINK HERE] and state block group household data; the latter must be downloaded using an API key from the census website [LINK HERE] and formatted as follows: state postal abbreviation + &ldquo;_bg_hh_acs_15_19.csv&rdquo; (for example, California would be formatted as &ldquo;ca_bg_hh_acs_15_19.csv&rdquo;).</p>
+                
+                <p>Before you run this program, be aware that it saves a &ldquo;_distance_matrix.csv&rdquo; file to the folder where the program is stored when you input a novel combination of city and study radius. This functionality is meant to save the program user time, as the distance matrix can take a long time to calculate in study areas with large numbers of block groups. To disable this functionality, comment out the last line of the program&rsquo;s thirty-first cell.</p>
+                
+                <hr>
+                
+                <p><b> Discussion</b></p>
+                
+                <p>Lacking a robust set of data on other people&rsquo;s perceptions of density, I settled on four urban areas on or near the west coast of the United States as my test cases. I chose these cities &ndash; Seattle, Portland, San Francisco, and San Diego &ndash; on the basis of my relative familiarity with their layouts, along with the diversity of density and landscape characteristics between them. These test case cities helped inform my methodological decisions in constructing the composite density metric and gave me a broader sense of the types of patterns that this metric and its components can reveal.</p>
+                
+                <p>Looking at the composite density of each of these cities plotted side by side, one is able to get a particularly clear sense of how households are distributed within them. It becomes easy to grasp the relative pointiness of downtown San Francisco, for example, or the relative polycentricity of San Diego&rsquo;s development. Whereas plots of gross household density tend to exhibit large amounts of distracting noise, plots of composite density tend to do a better job of preserving the large-scale contours of density, such that viewers can better grasp the continuum of density that urban planners sometimes refer to as the &ldquo;urban to rural transect.&rdquo; Indeed, composite density&rsquo;s incorporation of both travelsheds and demic units ensures that data is smoothed in two ways: travelsheds enable kernel average smoothing, whereas demic units enable nearest-neighbor smoothing.</p>
+                
+                <p>Besides painting a smoother portrait of an urban area&rsquo;s density contours, the composite density metric also provides insight into which neighborhoods are most likely to experience economies (or diseconomies) of density. More concretely, it shows how the benefits (or costs) of living in dense neighborhoods may be influencing residents&rsquo; decisions about where to live and firms&rsquo; decisions about where to locate. As urban areas turn to infill development and densification as relatively sustainable growth strategies, this type of information could help policy makers minimize the disruptive effects of local density increases. As an example of this, let us imagine a scenario in which there are two block groups being considered for an infill development, with these block groups having the same gross household density but different composite density values. Because the block group with the higher composite density value is already located in a denser neighborhood, the marginal effect of the density increase on people&rsquo;s perceptions of the neighborhood is likely to be smaller in that block group.</p>
+                
+                <p>With this example in mind, I added another block group-level variable to the program and named it &ldquo;infill growth index.&rdquo; To construct this variable, I measured what I call the block group&rsquo;s &ldquo;perceptual offset,&rdquo; or the degree to which its composite density value either overperforms or underperforms its gross density quantile value, then averaged the quantile value of that metric with the block group&rsquo;s composite density value. The resulting variable attempts to quantify the degree to which the addition of new households to a block group would change people&rsquo;s perception of an urban area&rsquo;s overall density contours. Granted, this metric is far from the only variable that policy makers should consider when planning for infill growth, but given the non-trivial role of people&rsquo;s perceptions of density in the planning process, I believe it is relevant. Ideally, what the infill growth index measures should be considered alongside other variables &ndash; including local ecology, public transit accessibility, and displacement risks &ndash; when evaluating the sustainability of an infill development proposal.</p>
+                
+                <p>Development implications aside, in the process of constructing the composite density metric, I stumbled across a phenomenon that I have grown to think of as the &ldquo;neighbor paradox,&rdquo; or an application of sociology&rsquo;s &ldquo;friendship paradox&rdquo; to certain types of geospatial problems that involve density. In each of my four test cases, the urban area&rsquo;s household-weighted block group-level average travelshed density was at least 2.5 percent higher than its household-weighted block group-level average gross household density, which in more concrete terms suggests that the average household within any given household&rsquo;s travelshed is likely to be located in a block group with a higher gross household density than the given household&rsquo;s block group. This is related to the friendship paradox because the relationship between pairs of households located in each other&rsquo;s travelsheds can be represented using an undirected graph, and because the approximate standardization of travelshed areas means that travelshed density tends to be strongly correlated with the number of households in a given household&rsquo;s travelshed. Just as the friendship paradox describes the phenomenon wherein the average person&rsquo;s average friend tends to have more friends than said person, the neighbor paradox describes the phenomenon wherein the average household&rsquo;s average neighbor &ndash; when &lsquo;neighbor&rsquo; is defined as all households located within a circle of a given radius &ndash; tends to be located in a circle with more households than said household. This finding suggests that people may disproportionately view their own households as being more peripherally located than other households in their neighborhoods, although more research is needed to corroborate the durability of this hypothesis.</p>
+                
+                <hr>
+                
+                <p><b>Future Directions</b></p>
+                
+                <p>Going forward, I hope to expand this framework by incorporating a variety of other methods and variables that were beyond the initial scope of this project. Here is a list of some of my expansion ideas:</p>
+                
+                <p><i>Net Density</i> &ndash; While it made sense to use gross households per land area as the baseline density metric for this project, I am interested in incorporating net density (households per developable land, which would exclude non-developable land categories such as roads and public open space) into future iterations of this project.</p>
+                
+                <p><i>Road Networks</i> &ndash; I anticipate that future models of perceptual density &ndash; and particularly of travelsheds &ndash; will incorporate road networks and their constraints on movement, whether by replacing great circle distances with road network distances or by measuring network attributes such as block size and intersection density.</p>
+                
+                <p><i>Public Transit Accessibility</i> &ndash; Given public transit&rsquo;s role in connecting different neighborhoods and reducing the energy footprint of human mobility, I look forward to building models of perceptual density that incorporate the degree to which neighborhoods are accessible via the public transit network.</p>
+                
+                <p><i>Inter-Urban Comparisons</i> &ndash; While the composite density framework is tailored to display the contours of density within an urban area, it is not very useful as a means of comparing two different neighborhoods within two different urban areas. That deficit is something that I hope to tackle in future iterations of this project.</p>
+                
+                <p><i>International Data</i> &ndash; Given this project&rsquo;s reliance on data from the U.S. Census, it is not yet capable of incorporating data from cities outside of the United States. In future iterations of this project, I am interested in broadening the ability of the program to analyze cities in a variety of countries.</p>
+                
+                <p><i>Data Interpolation</i> &ndash; Although the contours of composite density are much smoother than other metrics of density (such as gross density), these contours would be even smoother if I interpolated unique values for each hexagon in the H3 hexagonal grid. That is a task I intend to undertake in future iterations of this project.</p>
+                
+                <p><i>Topographic Features</i> &ndash; I want to incorporate topographic data (such as slope and elevation) into future work on perceptual density for two reasons: first, topographic features influence mobility; and second, an improved infill growth index would prioritize growth in areas with higher elevation (which are less prone to flooding and sea level rise) and flatter areas (which are less prone to erosion and easier to build on).</p>
+                
+                <p><i>Wealth Distribution</i> &ndash; Wealth and income are among the most consequential forces involved in the development of urban areas. Because of this, I think it would be interesting to look at how perceptual density interacts with various wealth-related variables &ndash; such as land prices, rent prices, GDP density, and poverty &ndash; in future explorations of perceptual density and its role in human society.</p>
+                
+                <hr>
+                
+                <p><b> References</b></p>
+                
+                <p>Brodsky, Isaac. &ldquo;H3: Uber&rsquo;s Hexagonal Hierarchical Spatial Index.&rdquo; <i>Uber Engineering Blog</i>, 27 June 2018, https://eng.uber.com/h3/.</p>
+                
+                <p>&ldquo;Find Apartments for Rent and Rentals - Get Your Walk Score.&rdquo; <i>Walk Score</i>, https://www.walkscore.com/. Accessed 3 Nov. 2021.</p>
+                
+                <p>&ldquo;Geometry Library | Maps JavaScript API.&rdquo; <i>Google Developers</i>, https://developers.google.com/maps/documentation/javascript/geometry. Accessed 3 Nov. 2021.</p>
+                
+                <p>Holian, Matthew J. &ldquo;Where Is the City&rsquo;s Center? Five Measures of Central Location.&rdquo; <i>Cityscape</i>, vol. 21, no. 2, 2019, pp. 213&ndash;26.</p>
+                
+                <p>&ldquo;Introduction to the Demic Atlas.&rdquo; <i>GeoCurrents</i>, https://www.geocurrents.info/economic-geography/introduction-to-the-demic-atlas. Accessed 3 Nov. 2021.</p>
+                
+                <p>Kolko, Jed. &ldquo;How Suburban Are Big American Cities?&rdquo; <i>FiveThirtyEight</i>, 21 May 2015, https://fivethirtyeight.com/features/how-suburban-are-big-american-cities/.</p>
+                
+                <p>Kurgan, Laura. &ldquo;Bill Rankin and Laura Kurgan: Seeing Cities.&rdquo; <i>Guernica</i>, 15 Dec. 2015, https://www.guernicamag.com/seeing-cities/.</p>
+                
+                <p>Marchetti, C. &ldquo;Anthropological Invariants in Travel Behavior.&rdquo; <i>Technological Forecasting and Social Change</i>, vol. 47, no. 1, Sept. 1994, pp. 75&ndash;88. <i>DOI.org (Crossref)</i>, https://doi.org/10.1016/0040-1625(94)90041-8.</p>
+                
+                <p>&ldquo;Mayors Launch a Green and Just COVID-19 Recovery Plan &amp; Demand National Governments End Fossil Fuel Subsidies.&rdquo; <i>C40 Cities</i>, https://www.c40.org/news/mayors-launch-a-green-and-just-covid-19-recovery-plan-demand-national-governments-end-fossil-fuel-subsidies/. Accessed 3 Nov. 2021.</p>
+                
+                <p>Moreno, Carlos, et al. &ldquo;Introducing the &lsquo;15-Minute City&rsquo;: Sustainability, Resilience and Place Identity in Future Post-Pandemic Cities.&rdquo; <i>Smart Cities</i>, vol. 4, no. 1, Jan. 2021, pp. 93&ndash;111. <i>DOI.org (Crossref)</i>, https://doi.org/10.3390/smartcities4010006.</p>
+                
+                <p><i>Number of Hospitals and Hospital Employment in Each State in 2019&#8239;: The Economics Daily: U.S. Bureau of Labor Statistics</i>. https://www.bls.gov/opub/ted/2020/number-of-hospitals-and-hospital-employment-in-each-state-in-2019.htm. Accessed 3 Nov. 2021.</p>
+                
+                <p><i>Radicalcartography</i>. http://www.radicalcartography.net/. Accessed 3 Nov. 2021.</p>
+                
+                <p>Schimpl, Michaela, et al. &ldquo;Association between Walking Speed and Age in Healthy, Free-Living Individuals Using Mobile Accelerometry&mdash;A Cross-Sectional Study.&rdquo; <i>PLoS ONE</i>, edited by Alejandro Lucia, vol. 6, no. 8, Aug. 2011, p. e23299. <i>DOI.org (Crossref)</i>, https://doi.org/10.1371/journal.pone.0023299.</p>
+                
+                <p>Taherdoost, Hamed. &ldquo;What Is the Best Response Scale for Survey and Questionnaire Design; Review of Different Lengths of Rating Scale / Attitude Scale / Likert Scale.&rdquo; <i>International Journal of Academic Research in Management (IJARM)</i>, vol. 8, 2019. <i>HAL Archives Ouvertes</i>, https://hal.archives-ouvertes.fr/hal-02557308.</p>
+                
+                <p>Tuson, M., et al. &ldquo;Incorporating Geography into a New Generalized Theoretical and Statistical Framework Addressing the Modifiable Areal Unit Problem.&rdquo; <i>International Journal of Health Geographics</i>, vol. 18, no. 1, Dec. 2019, p. 6. <i>DOI.org (Crossref)</i>, https://doi.org/10.1186/s12942-019-0170-3.</p>
+                
+                <p>Twaddell, Hannah. &ldquo;The ABC&rsquo;s of TOD: Transit-Oriented Development.&rdquo; <i>PlannersWeb</i>, 27 Feb. 2009, https://plannersweb.com/2009/02/the-abcs-of-tod-transit-oriented-development/.</p>
+                
+                <p>&ldquo;Urban Areas for the 2020 Census-Proposed Criteria.&rdquo; <i>Federal Register</i>, 19 Feb. 2021, https://www.federalregister.gov/documents/2021/02/19/2021-03412/urban-areas-for-the-2020-census-proposed-criteria.</p>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
