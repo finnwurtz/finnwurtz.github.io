@@ -36,25 +36,52 @@
         </nav>
         <!-- Page content-->
         <div class="container">
-            <div class="text-center mt-5">
-                <h1>Deriving Composite Density</h1>
-                <p class="lead">(Images may take a moment to load)</p>
+            <div class="text-left mt-5">
+                <h1 align="center">Deriving Composite Density</h1>
+                
                 <hr>
-                <h2>Seattle Gross Density</h2>
+
+                <p><b>Overview</b></p>
+                
+                <p>This page explains and plots the metrics used to calculate the composite density metric proposed in my <a href="perceptual.html">Perceptual Density Project</a>, using data from the city of Seattle, Washington. Composite density (<a href="#f4">Figure 4</a>) is a hybrid metric of urban density, intended as a proxy for perceived neighborhood density, that directly incorporates the following measures:</p>
+
+                <p>&bull; Gross density (<a href="#f1">Figure 1</a>) is the number of households in a block group divided by the block group&rsquo;s land area.</p>
+
+                <p>&bull; Travelshed density (<a href="#f2">Figure 2</a>) is the average gross density of all block groups whose centroids are located within a given radius of a block group&rsquo;s centroid, intended as a proxy for neighborhood density within a given travel distance.</p>
+
+                <p>&bull; Demic unit radius (<a href="#f3">Figure 3</a>) is the smallest radius containing the centroids of the block groups containing the nearest set of a given number of households to a block group&rsquo;s centroid, intended as a proxy for the catchment areas of neighborhood institutions of a given scale.</p>
+
+                <hr>
+
+                <p id="f1"><b>Figure 1: Seattle Gross Density</b></p>
+
                 <img src="sea_wa_gd_r.jpg" loading="lazy" alt="Gross Density" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>To derive composite density, we start with gross household density, or the density of households per land area for each of the block groups in the study area. This first plot displays the gross household density distribution for each of the block groups analyzed in the Seattle test case, with the red zones containing the block groups with the highest densities and the blue zones containing the block groups with the lowest densities. Note that each set of zones that is shaded a given color contains approximately the same proportion of the study area’s households; hence, the total area of the red zones is much smaller than the total area of the blue zones.</p>
+                
+                <p>To derive composite density, we start with gross density, or the density of households per land area for each of the block groups in the study area. This plot displays the gross household density distribution for each of the block groups analyzed in the Seattle test case, with the red zones corresponding to the block groups with the highest densities and the blue zones corresponding to the block groups with the lowest densities. Note that each color contains approximately the same proportion of the study area&rsquo;s households; hence, the total area of the red zones is much smaller than the total area of the blue zones.</p>
+                
                 <hr>
-                <h2>Seattle Travelshed Density</h2>
+
+                <p id="f2"><b>Figure 2: Seattle Travelshed Density</b></p>
+
                 <img src="sea_wa_td_r.jpg" loading="lazy" alt="Travelshed Density" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>Using gross household density in conjunction with other user-defined parameters, we can derive two more values for each of the block groups in the study area. One of these two values is a travelshed density value, which the program calculates by taking the household-weighted average of the gross household density of all block groups whose centroids fall within a user-defined travelshed radius of each block group’s centroid. This second plot displays the travelshed density distribution for the Seattle test case, with the red zones again containing the block groups with the highest densities and the blue zones again containing the block groups with the lowest densities.</p>
+                
+                <p>Using gross density in conjunction with other user-defined parameters, we can derive two more values for each of the block groups in the study area. One of these two values is a travelshed density value, which the program calculates by taking the household-weighted average of the gross household density of all block groups whose centroids fall within a user-defined travelshed radius of each block group&rsquo;s centroid. This plot displays the travelshed density distribution for the Seattle test case, with the red zones again corresponding to the block groups with the highest densities and the blue zones again corresponding to the block groups with the lowest densities.</p>
+                
                 <hr>
-                <h2>Seattle Demic Unit Radius</h2>
+
+                <p id="f3"><b>Figure 3: Seattle Demic Unit Radius</b></p>
+
                 <img src="sea_wa_du_r.jpg" loading="lazy" alt="Demic Unit Radius" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>The other of these values is a demic unit radius value, which the program calculates by iteratively summing the households from the block group’s nearest block groups until the number of households in a user-defined demic unit is reached. The radius is equal to the distance between the block group’s centroid and the centroid of its tipping-point block group, or the block group whose addition to the demic unit pushes the total sum of households over the user-defined demic unit threshold. This third plot displays the demic unit radius distribution for the Seattle test case, with the red zones containing the block groups with the smallest radii (corresponding to high densities) and the blue zones containing the block groups with the largest radii (corresponding to low densities).</p>
+                
+                <p>The other of these values is a demic unit radius value, which the program calculates by iteratively summing the households from the block group&rsquo;s nearest block groups until the number of households in a user-defined demic unit is reached. The radius is equal to the distance between the block group&rsquo;s centroid and the centroid of its tipping-point block group, or the block group whose addition to the demic unit pushes the total sum of households over the user-defined demic unit threshold. This plot displays the demic unit radius distribution for the Seattle test case, with the red zones corresponding to the block groups with the smallest radii (correlating with high densities) and the blue zones corresponding to the block groups with the largest radii (correlating with low densities).</p>
+                
                 <hr>
-                <h2>Seattle Composite Density</h2>
+
+                <p id="f4"><b>Figure 4: Seattle Composite Density</b></p>
+
                 <img src="sea_wa_cd_r.jpg" loading="lazy" alt="Composite Density" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>Once we have calculated all three of the values plotted above, we can combine them into a composite density metric that takes each of the values into account. The composite density value is calculated for each urban block group using the household-weighted quantiles of the block group’s gross density, travelshed density, and demic unit radius values, relative to all of the urban block groups in the study area, with each of those component metrics weighted according to the user’s preference. This fourth plot displays the composite density distribution for the Seattle test case; as before, the red areas contain the block groups with the highest densities and the blue areas contain the block groups with the lowest densities.</p>
+                
+                <p>Once we have calculated all three of the values plotted above, we can combine them into a composite density metric that takes each of the values into account. The composite density value is calculated for each urban block group using the household-weighted percentiles of the block group&rsquo;s gross density, travelshed density, and demic unit radius values, relative to all of the urban block groups in the study area, with each of those component metrics weighted according to the user&rsquo;s preference. This plot displays the composite density distribution for the Seattle test case; as before, the red areas correspond to the block groups with the highest densities and the blue areas correspond to the block groups with the lowest densities.</p>
             </div>
         </div>
         <!-- Bootstrap core JS-->

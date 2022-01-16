@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Finn's Website | Deriving An Infill Growth Index</title>
+        <title>Finn's Website | Deriving an Infill Growth Index</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -36,25 +36,52 @@
         </nav>
         <!-- Page content-->
         <div class="container">
-            <div class="text-center mt-5">
-                <h1>Deriving An Infill Growth Index</h1>
-                <p class="lead">(Images may take a moment to load)</p>
+            <div class="text-left mt-5">
+                <h1 align="center">Deriving an Infill Growth Index</h1>
+                
                 <hr>
-                <h2>Seattle Gross Density</h2>
+                
+                <p><b>Overview</b></p>
+
+                <p>This page explains and plots the metrics used to calculate the infill growth index proposed in my <a href="perceptual.html">Perceptual Density Project</a>, using data from the city of Seattle, Washington. The infill growth index (<a href="#f4">Figure 4</a>) is a metric of urban infill growth potential, intended as a proxy for block groups&rsquo; sensitivity to infill growth, that either directly or indirectly incorporates the following measures:</p>
+                
+                <p>&bull; Gross density (<a href="#f1">Figure 1</a>) is the number of households in a block group divided by the block group&rsquo;s land area.</p>
+
+                <p>&bull; Composite density (<a href="#f2">Figure 2</a>) is a hybrid metric of urban density, intended as a proxy for perceived neighborhood density.</p>
+
+                <p>&bull; Perceptual offset (<a href="#f3">Figure 3</a>) is the degree to which a block group&rsquo;s composite density percentile either overperforms or underperforms its gross density percentile, intended as a proxy for the disconnect between a block group&rsquo;s gross density and the perceived density of the neighborhood.</p>
+                
+                <hr>
+
+                <p id="f1"><b>Figure 1: Seattle Gross Density</b></p>
+
                 <img src="sea_wa_gd_r.jpg" loading="lazy" alt="Gross Density" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>To derive an infill growth index, we again start with gross household density, or the density of households per land area for each of the block groups in the study area. This first plot displays the gross household density distribution for each of the block groups analyzed in the Seattle test case, with the red zones containing the block groups with the highest densities and the blue zones containing the block groups with the lowest densities. Note that each set of zones that is shaded a given color contains approximately the same proportion of the study area’s households; hence, the total area of the red zones is much smaller than the total area of the blue zones.</p>
+                
+                <p>To derive an infill growth index, we again start with gross density, or the density of households per land area for each of the block groups in the study area. This plot displays the gross household density distribution for each of the block groups analyzed in the Seattle test case, with the red zones corresponding to the block groups with the highest densities and the blue zones corresponding to the block groups with the lowest densities. Note that each color contains approximately the same proportion of the study area&rsquo;s households; hence, the total area of the red zones is much smaller than the total area of the blue zones.</p>
+                
                 <hr>
-                <h2>Seattle Composite Density</h2>
+
+                <p id="f2"><b>Figure 2: Seattle Composite Density</b></p>
+                
                 <img src="sea_wa_cd_r.jpg" loading="lazy" alt="Composite Density" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>Next, we look at gross household density alongside composite density, which is itself a combination of gross household density, travelshed density, and demic unit radius values. I explain how I derive composite density on this page [LINK HERE]. This second plot displays the composite density distribution for the Seattle test case, with the red zones again containing the block groups with the highest densities and the blue zones again containing the block groups with the lowest densities.</p>
+                
+                <p>Next, we look at gross density alongside composite density, which is itself a combination of gross density, travelshed density, and demic unit radius values. I explain how I derive composite density on <a href="deriving_composite.html">this page</a>. This plot displays the composite density distribution for the Seattle test case, with the red zones again corresponding to the block groups with the highest densities and the blue zones again corresponding to the block groups with the lowest densities.</p>
+                
                 <hr>
-                <h2>Seattle Perceptual Offset</h2>
+                
+                <p id="f3"><b>Figure 3: Seattle Perceptual Offset</b></p>
+                
                 <img src="sea_wa_po_r.jpg" loading="lazy" alt="Perceptual Offset" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>We get our third variable, which I call 'perceptual offset,' by calculating the household-weighted distribution of block groups by gross density and the household-weighted distribution of block groups by composite density. The perceptual offset of a block group is the difference between a block group’s composite density quantile and its gross density quantile. Hence, block groups with lower gross household density values relative to their neighbors tend to have higher perceptual offset values. This third plot displays the perceptual offset distribution for the Seattle test case, with the red zones containing the block groups with the highest values and the blue zones containing the block groups with the lowest values.</p>
+                
+                <p>We get our third variable, perceptual offset, by calculating the household-weighted distribution of block groups by gross density and the household-weighted distribution of block groups by composite density. The perceptual offset of a block group is the difference between a block group&rsquo;s composite density percentile and its gross density percentile. Hence, block groups with lower gross household density values relative to their neighbors tend to have higher perceptual offset values. This plot displays the perceptual offset distribution for the Seattle test case, with the red zones corresponding to the block groups with the highest values and the blue zones corresponding to the block groups with the lowest values.</p>
+                
                 <hr>
-                <h2>Seattle Infill Growth Index</h2>
+                
+                <p id="f4"><b>Figure 4: Seattle Infill Growth Index</b></p>
+                
                 <img src="sea_wa_igi_r.jpg" loading="lazy" alt="Infill Growth Index" style='height: 100%; width: 100%; object-fit: contain'>
-                <p>Finally, to get the infill growth index value of each block group, we average its household-weighted composite quantile value with its household-weighted perceptual offset quantile and take the quantile value of the result. It follows that the block groups with the highest infill growth index values tend to have both high composite density values and high perceptual offset values, meaning that they are surrounded by high-density block groups and are not as dense as their neighbors. This fourth plot displays the infill growth index distribution for the Seattle test case; as before, the red zones again containing the block groups with the highest values and the blue zones again containing the block groups with the lowest values.</p>
+                
+                <p>Finally, to get the infill growth index value of each block group, we average its household-weighted composite percentile value with its household-weighted perceptual offset percentile and take the percentile value of the result. It follows that the block groups with the highest infill growth index values tend to have both high composite density values and high perceptual offset values, meaning that they are surrounded by high-density block groups and are not as dense as their neighbors. This plot displays the infill growth index distribution for the Seattle test case; as before, the red zones again corresponding to the block groups with the highest values and the blue zones again corresponding to the block groups with the lowest values.</p>
             </div>
         </div>
         <!-- Bootstrap core JS-->
