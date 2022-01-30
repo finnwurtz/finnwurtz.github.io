@@ -36,7 +36,7 @@
         <!-- Page content-->
         <div class="container">
             <div class="text-left mt-5">
-                <h1 align="center">Perceptual Density: a Hybrid Approach to Measuring Urban Space [DRAFT]</h1>
+                <h1 align="center">Perceptual Density: a Hybrid Approach to Measuring Urban Space</h1>
                 
                 <p class="lead"  align="center">Finn Wurtz, Data Analyst and Digital Cartographer</p>
                 
@@ -166,7 +166,7 @@
                 
                 <p>(Note: the versions of city_hall_coords.csv and tl_2020_us_uac10 in my GitHub repository include only the data for my four test case cities. For a more complete version of city_hall_coords.csv, refer to the data <a href="http://mattholian.blogspot.com/2019/02/where-is-citys-center-on-recent-use-of.html">included</a> in Matthew Holian&rsquo;s 2019 paper.</p>
                 
-                <p>To assemble and format state block group data, you will need state block group <a href="https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2019&layergroup=Block+Groups">shapefiles</a> and state block group household data; the latter must be downloaded using an API key from the census planning <a href="https://www.census.gov/data/developers/data-sets/planning-database.html">database</a> and formatted as follows: state postal abbreviation + &ldquo;_bg_hh_acs_15_19.csv&rdquo; (for example, California would be formatted as &ldquo;ca_bg_hh_acs_15_19.csv&rdquo;).</p>
+                <p>To assemble and format state block group data, you will need state block group <a href="https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2019&layergroup=Block+Groups">shapefiles</a> and state block group household data; the latter must be downloaded using an API key from the census planning <a href="https://www.census.gov/data/developers/data-sets/planning-database.2019.html">database</a> and formatted as follows: state postal abbreviation + &ldquo;_bg_hh_acs_15_19.csv&rdquo; (for example, California would be formatted as &ldquo;ca_bg_hh_acs_15_19.csv&rdquo;).</p>
                 
                 <p>Before you run this program, be aware that it saves a &ldquo;_distance_matrix.csv&rdquo; file to the folder where the program is stored when you input a novel combination of city and study radius. This functionality is meant to save the program user time, as the distance matrix can take a long time to calculate in study areas with large numbers of block groups. To disable this functionality, comment out the last line of the program&rsquo;s thirty-first cell.</p>
                 
