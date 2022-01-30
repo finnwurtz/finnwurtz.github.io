@@ -1,2 +1,2 @@
 # finnwurtz.github.io
-[finnwurtz.github.io](https://finnwurtz.github.io/) is the soon-to-be home of my project website; I expect it to be up and running soon.
+[finnwurtz.github.io](https://finnwurtz.github.io/) is the home of my portfolio website; I use it to publicly showcase my projects.
